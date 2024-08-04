@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose, IoMdSearch } from "react-icons/io";
 
 const categories = [
@@ -29,6 +29,15 @@ export default function CategorySelector() {
   const [selectedContinent, setSelectedContinent] =
     useState<string>("Any continent");
   const [result, setResult] = useState<Location>();
+
+  // Scroll into view when result changes
+  useEffect(() => {
+    if (result) {
+      document
+        .getElementById("result-find")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [result]);
 
   const handleClick = (category: string) => {
     setSelectedCategories(
@@ -143,7 +152,10 @@ export default function CategorySelector() {
 
       <div>
         {loading ? (
-          <button disabled className="flex justify-center items-center border border-red-300 rounded-lg p-4 text-black w-full my-4">
+          <button
+            disabled
+            className="flex justify-center items-center border border-red-300 rounded-lg p-4 text-black w-full my-4"
+          >
             <svg
               width="20"
               height="20"
@@ -190,8 +202,8 @@ export default function CategorySelector() {
               ))}
               <div className="justify-center flex flex-col text-sm my-5">
                 <p className="text-slate-400 text-center">
-                  Not your kind of flow? Try including stronger keywords in
-                  your search
+                  Not your kind of flow? Try including stronger keywords in your
+                  search
                 </p>
                 <button
                   className="text-teal-500 font-bold"
