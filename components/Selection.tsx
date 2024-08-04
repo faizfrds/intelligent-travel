@@ -169,7 +169,7 @@ export default function CategorySelector() {
               <h2 className="my-2 font-bold text-2xl text-teal-800">
                 {result.location}
               </h2>
-              <div className="w-full lg:h-32 h-24">
+              <div className="w-full lg:h-1/4 h-1/6">
                 <img
                   className="w-full h-full object-cover rounded-lg"
                   src={result.image}
@@ -182,7 +182,7 @@ export default function CategorySelector() {
               {result.top_attractions?.map((item, index) => (
                 <div
                   key={index}
-                  className="text-sm p-2 mb-7 rounded-md bg-slate-100/40"
+                  className="text-sm p-3 mb-2 rounded-md bg-slate-100/40"
                 >
                   <p className="font-semibold mb-3">{item.name}</p>
                   <p>{item.description}</p>
@@ -190,7 +190,7 @@ export default function CategorySelector() {
               ))}
               <div className="justify-center flex flex-col text-sm my-5">
                 <p className="text-slate-400 text-center">
-                  Not your kind of flow? Try to include stronger keywords in
+                  Not your kind of flow? Try including stronger keywords in
                   your search
                 </p>
                 <button
