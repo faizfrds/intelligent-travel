@@ -74,9 +74,17 @@ export default function CategorySelector() {
           onChange={(e) => setSelectedContinent(e.target.value)}
           value={selectedContinent}
         >
-          {["Anywhere!", "Asia", "Europe", "North America", "South America", "Africa", "Australia and Oceania"].map(loc => (<option>
-            {loc}
-          </option>))}
+          {[
+            "Anywhere!",
+            "Asia",
+            "Europe",
+            "North America",
+            "South America",
+            "Africa",
+            "Australia and Oceania",
+          ].map((loc, key) => (
+            <option key={key}>{loc}</option>
+          ))}
           {/* <option>Anywhere!</option>
           <option>Asia</option>
           <option>Europe</option>
@@ -132,13 +140,10 @@ export default function CategorySelector() {
           className="bg-gray-50 border border-gray-300 text-teal-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
         />
       </div>
-  
 
       <div>
         {loading ? (
-          <button
-            className="flex justify-center items-center border border-red-300 rounded-lg p-4 text-black w-full my-4 hover:bg-red-300 hover:text-white"
-          >
+          <button disabled className="flex justify-center items-center border border-red-300 rounded-lg p-4 text-black w-full my-4">
             <svg
               width="20"
               height="20"
@@ -164,8 +169,11 @@ export default function CategorySelector() {
               <h2 className="my-2 font-bold text-2xl text-teal-800">
                 {result.location}
               </h2>
-              <div className="w-full lg:h-1/5 h-1/6">
-                <img className="object-cover rounded-lg" src={result.image} />
+              <div className="w-full lg:h-32 h-24">
+                <img
+                  className="w-full h-full object-cover rounded-lg"
+                  src={result.image}
+                />
               </div>
               <p className="text-sm my-6">{result.description}</p>
               <h1 className="my-3 text-lg font-bold">
@@ -174,7 +182,7 @@ export default function CategorySelector() {
               {result.top_attractions?.map((item, index) => (
                 <div
                   key={index}
-                  className="text-sm p-2 my-2 border border-teal-600 rounded-md"
+                  className="text-sm p-2 mb-7 rounded-md bg-slate-100/40"
                 >
                   <p className="font-semibold mb-3">{item.name}</p>
                   <p>{item.description}</p>

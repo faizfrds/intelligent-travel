@@ -1,4 +1,3 @@
-import Banner from "@/components/Banner";
 import Form from "@/components/Form";
 import CategorySelector from "@/components/Selection";
 import OpenAI from "openai";
